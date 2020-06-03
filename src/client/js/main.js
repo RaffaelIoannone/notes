@@ -1,4 +1,7 @@
-import Note from './modules/note.js';
+import Note from './model/note.js';
+import './view/template.js';
+import './lib/handlebars.runtime.js';
+
 
 const noteList = [];
 noteList.push(
@@ -27,3 +30,5 @@ themeSelect.addEventListener('change', () => {
     .forEach((classname) => document.body.classList.toggle(classname));
   document.body.classList.toggle(themeSelect.options[themeSelect.selectedIndex].value);
 });
+
+document.querySelector('#nodeList').innerHTML = Handlebars.templates.noteList();
