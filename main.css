@@ -1,0 +1,73 @@
+:root {
+  --dark-grey: rgb(37, 34, 34);
+  --ligth-green: #8ee4af;
+  --normal-green: #5cdb95;
+  --dark-green: #379683;
+  --cream: #edf5e1;
+  --navy: #05386b;
+}
+
+.dark-theme {
+  --background: var(--dark-grey);
+  --color: var(--cream);
+}
+
+.light-theme {
+  --background: var(--cream);
+  --color: var(--dark-grey);
+}
+
+.forrest-theme {
+  --background: var(--normal-green);
+  --color: var(--navy);
+}
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  color: var(--color);
+  background: var(--background);
+  display: grid;
+  grid-template-columns: 20% 1fr 20%;
+  grid-template-rows: auto 1fr auto;
+  row-gap: 10px;
+  grid-template-areas: 
+    "header header header"
+    ". main ."
+    "footer footer footer";
+}
+
+header {
+  grid-area: header;
+}
+
+main {
+  grid-area: main;
+}
+
+footer {
+  grid-area: footer;
+}
+
+
+
+form {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  column-gap: 10px;
+}
+
+.form-label {
+  grid-column: 1 / span 1;
+}
+
+.form-input {
+  grid-column: 2 / span 1;
+}
+
+.form-submit {
+  grid-column: 1 / span 2;
+}
+
+.form-cancel {
+  grid-column: 2 / span 1;
+}

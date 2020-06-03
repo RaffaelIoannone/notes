@@ -6,15 +6,50 @@
     <title>Notes</title>
     <link rel="stylesheet" href="main.css">
 </head>
-<body>
+<body class="light-theme">
     <header>
-        <select id="theme">
-            <option value="light">Light theme</option>
-            <option value="dark">Dark theme</option>
+        <button type="button">Create new Note</button>
+        <select id="theme-select">
+            <option selected value="light-theme">Light theme</option>
+            <option value="dark-theme">Dark theme</option>
+            <option value="forrest-theme">Forrest theme</option>
         </select>
     </header>
     <main>
         <h1>My note application</h1>
+        <h2>List</h2>
+        <button type="button">By finish Date</button>
+        <button type="button">By created Date</button>
+        <button type="button">By importance Date</button>
+
+        <button type="button">Show finished</button>
+
+
+
+
+        <h2>Add</h2>
+        <form action="./" method="POST" id="form-add-note"> 
+            <label class="form-label" for="title">Title</label>
+            <input class="form-input" type="text" name="title" id="title" placeholder="Enter your title">
+
+            <label class="form-label" for="description">Description</label>
+            <textarea lass="form-input" name="description" id="description" placeholder="Enter your description"></textarea>
+
+            <label class="form-label" for="importance">Importance</label>
+            <div class="form-input">
+                <input type="radio" name="importance" value="1" id="importance">
+                <input type="radio" name="importance" value="2">
+                <input type="radio" name="importance" value="3">
+                <input type="radio" name="importance" value="4">
+                <input type="radio" name="importance" value="5">
+            </div>
+
+            <label class="form-label" for="duedate">Done until</label>
+            <input lass="form-input" type="date" name="duedate" id="duedate">
+
+            <button class="form-submit" type="submit">Save</button>
+            <button class=" form-cancel" type="button">Cancel</button>
+        </form>
     </main>
     <footer>&copy; Copyright 2020 Raffael Ioannone</footer>
     <script type="module" src="./main.js"></script>
