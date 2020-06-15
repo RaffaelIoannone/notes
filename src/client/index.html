@@ -5,8 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Notes</title>
     <link rel="stylesheet" href="./assets/css/main.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.7.6/handlebars.runtime.min.js" defer></script>
     <script type="module" src="./js/main.js" defer></script>
-    <!-- <script src="../../node_modules/handlebars/dist/handlebars.runtime.min.js"></script> -->
 </head>
 <body class="light-theme">
     <header>
@@ -20,39 +20,19 @@
     <main>
         <h1>My note application</h1>
         <h2>List</h2>
-        <button type="button">By finish Date</button>
-        <button type="button">By created Date</button>
-        <button type="button">By importance Date</button>
+
+        <select id="sort-select">
+            <option selected value="creationDate">By created Date</option>
+            <option value="finishDate">By finish Date</option>
+            <option value="importance">By importance</option>
+        </select>
 
         <button type="button">Show finished</button>
 
-        <div id="nodeList"></div>
-
-
+        <div id="note-list-container"></div>
 
         <h2>Add</h2>
-        <form action="./" method="POST" id="form-add-note"> 
-            <label class="form-label" for="title">Title</label>
-            <input class="form-input" type="text" name="title" id="title" placeholder="Enter your title">
-
-            <label class="form-label" for="description">Description</label>
-            <textarea lass="form-input" name="description" id="description" placeholder="Enter your description"></textarea>
-
-            <label class="form-label" for="importance">Importance</label>
-            <div class="form-input">
-                <input type="radio" name="importance" value="1" id="importance">
-                <input type="radio" name="importance" value="2">
-                <input type="radio" name="importance" value="3">
-                <input type="radio" name="importance" value="4">
-                <input type="radio" name="importance" value="5">
-            </div>
-
-            <label class="form-label" for="duedate">Done until</label>
-            <input lass="form-input" type="date" name="duedate" id="duedate">
-
-            <button class="form-submit" type="submit">Save</button>
-            <button class=" form-cancel" type="button">Cancel</button>
-        </form>
+        <div id="note-form-container"></div>
     </main>
     <footer>&copy; Copyright 2020 Raffael Ioannone</footer>
 </body>

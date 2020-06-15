@@ -1,34 +1,23 @@
-import Note from './model/note.js';
 import './view/template.js';
-import './lib/handlebars.runtime.js';
+import Note from './model/note.js';
+import NoteService from './model/note-service.js';
+import NoteController from './controller/note-controller.js';
+import ThemeController from './controller/theme-controller.js';
 
+function main() {
+  const noteService = new NoteService();
 
-const noteList = [];
-noteList.push(
-  new Note('Einkaufen', 'Milch, Brot, Salat, Steak', 5, new Date('2020-05-15'))
-);
-noteList.forEach((a) => console.log(a));
+  const note1 = new Note('Einkaufen 3', 'Milch, Brot, Salat, Steak', 1, new Date('2020-03-15'), new Date('2020-04-15'));
+  noteService.addNote(note1);
+  const note2 = new Note('Einkaufen', 'Milch, Brot, Salat, Steak', 4, new Date('2020-05-15'), new Date('2020-05-15'));
+  noteService.addNote(note2);
+  const note3 = new Note('Einkaufen 2', 'Milch, Brot, Salat, Steak', 5, new Date('2020-04-15'), new Date('2020-03-15'));
+  noteService.addNote(note3);
 
+  new NoteController(noteService).init();
+  new ThemeController().init();
+}
 
-const form = document.getElementById('form-add-note');
-const title = document.getElementById('title');
-const description = document.getElementById('description');
-const importance = document.getElementById('importance');
-const duedate = document.getElementById('duedate');
-form.addEventListener('submit', (event) => {
-  event.preventDefault();
-  noteList.push(
-    new Note(title.value, description.value, importance.value, duedate.value)
-  );
-  noteList.forEach((a) => console.log(a));
-});
-
-const themeSelect = document.getElementById('theme-select');
-themeSelect.addEventListener('change', () => {
-  const classes = [...document.body.classList];
-  classes.filter((classname) => classname.includes('-theme'))
-    .forEach((classname) => document.body.classList.toggle(classname));
-  document.body.classList.toggle(themeSelect.options[themeSelect.selectedIndex].value);
-});
+document.addEventListener('DOMcontentLoaded', main());
 
 document.querySelector('#nodeList').innerHTML = Handlebars.templates.noteList();

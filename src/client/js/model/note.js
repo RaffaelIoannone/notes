@@ -1,11 +1,17 @@
-class Note {
-  constructor(title, desscription, importance, dueDate, finishDate = null) {
+export default class Note {
+  constructor(
+    title,
+    description,
+    importance,
+    dueDate,
+    finishDate = null,
+    creationDate = new Date(),
+  ) {
     this.title = title;
-    this.desscription = desscription;
+    this.description = description;
     this.importance = importance;
     this.dueDate = dueDate;
     this.finishDate = finishDate;
+    this.creationDate = creationDate;
   }
 }
-
-export default Note;

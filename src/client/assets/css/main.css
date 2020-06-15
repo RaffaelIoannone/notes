@@ -5,6 +5,9 @@
   --dark-green: #379683;
   --cream: #edf5e1;
   --navy: #05386b;
+  --white: rgb(254,254,254);
+  --grey: rgb(237, 240, 242);
+  --turk: rgb(53,73,84);
 }
 
 .dark-theme {
@@ -13,8 +16,10 @@
 }
 
 .light-theme {
-  --background: var(--cream);
-  --color: var(--dark-grey);
+  --background: var(--grey);
+  /* --color: var(--dark-grey); */
+  --note-color: var(--white);
+  --surrounding-color: var(--turk);
 }
 
 .forrest-theme {
@@ -25,7 +30,7 @@
 body {
   font-family: Arial, Helvetica, sans-serif;
   color: var(--color);
-  background: var(--background);
+  background: var(--surrounding-color);
   display: grid;
   grid-template-columns: 20% 1fr 20%;
   grid-template-rows: auto 1fr auto;
@@ -42,6 +47,7 @@ header {
 
 main {
   grid-area: main;
+  background: var(--background);
 }
 
 footer {
@@ -70,4 +76,12 @@ form {
 
 .form-cancel {
   grid-column: 2 / span 1;
+}
+
+.note {
+  margin: 15px 15px;
+}
+
+.light-theme .note {
+  background: var(--note-color);
 }

@@ -14,7 +14,9 @@
     "url": "https://github.com/RaffaelIoannone/notes/issues"
   },
   "homepage": "https://github.com/RaffaelIoannone/notes#readme",
-  "dependencies": {},
+  "dependencies": {
+    "handlebars": "^4.7.6"
+  },
   "devDependencies": {
     "eslint": "^6.8.0",
     "eslint-config-airbnb-base": "^14.1.0",
