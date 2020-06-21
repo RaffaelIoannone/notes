@@ -3,6 +3,22 @@
 templates['addNote'] = template({"compiler":[8,">= 4.3.0"],"main":function(container,depth0,helpers,partials,data) {
     return "<form action=\"./\" method=\"POST\" id=\"form-add-note\"> \n  <label class=\"form-label\" for=\"title\">Title</label>\n  <input class=\"form-input\" type=\"text\" name=\"title\" id=\"title\" placeholder=\"Enter your title\">\n\n  <label class=\"form-label\" for=\"description\">Description</label>\n  <textarea lass=\"form-input\" name=\"description\" id=\"description\" placeholder=\"Enter your description\"></textarea>\n\n  <label class=\"form-label\" for=\"importance\">Importance</label>\n  <div class=\"form-input\">\n      <input type=\"radio\" name=\"importance\" value=\"1\" id=\"importance\">\n      <input type=\"radio\" name=\"importance\" value=\"2\">\n      <input type=\"radio\" name=\"importance\" value=\"3\">\n      <input type=\"radio\" name=\"importance\" value=\"4\">\n      <input type=\"radio\" name=\"importance\" value=\"5\">\n  </div>\n\n  <label class=\"form-label\" for=\"duedate\">Done until</label>\n  <input lass=\"form-input\" type=\"date\" name=\"duedate\" id=\"duedate\">\n\n  <button class=\"form-submit\" type=\"submit\">Save</button>\n  <button class=\" form-cancel\" type=\"button\">Cancel</button>\n</form>";
 },"useData":true});
+templates['auth'] = template({"1":function(container,depth0,helpers,partials,data) {
+    return "  <form action=\"./\" method=\"POST\" id=\"form-logout\">\n    <button class=\"form-submit\" type=\"submit\">Logout</button>\n  </form>\n";
+},"3":function(container,depth0,helpers,partials,data) {
+    return "  <form action=\"./\" method=\"POST\" id=\"form-login\">\n    <label class=\"form-label\" for=\"email\">E-Mail</label>\n    <input class=\"form-input\" type=\"text\" name=\"email\" id=\"email\" placeholder=\"name@email.com\">\n    <label class=\"form-label\" for=\"password\">Password</label>\n    <input class=\"form-input\" type=\"password\" name=\"password\" id=\"password\" placeholder=\"your password\">\n    <button class=\"form-submit\" type=\"submit\">Login</button>\n  </form>\n";
+},"compiler":[8,">= 4.3.0"],"main":function(container,depth0,helpers,partials,data) {
+    var stack1, lookupProperty = container.lookupProperty || function(parent, propertyName) {
+        if (Object.prototype.hasOwnProperty.call(parent, propertyName)) {
+          return parent[propertyName];
+        }
+        return undefined
+    };
+
+  return "<div>\n"
+    + ((stack1 = lookupProperty(helpers,"if").call(depth0 != null ? depth0 : (container.nullContext || {}),(depth0 != null ? lookupProperty(depth0,"authorized") : depth0),{"name":"if","hash":{},"fn":container.program(1, data, 0),"inverse":container.program(3, data, 0),"data":data,"loc":{"start":{"line":2,"column":2},"end":{"line":14,"column":9}}})) != null ? stack1 : "")
+    + "</div>";
+},"useData":true});
 templates['noteList'] = template({"1":function(container,depth0,helpers,partials,data) {
     var helper, alias1=depth0 != null ? depth0 : (container.nullContext || {}), alias2=container.hooks.helperMissing, alias3="function", alias4=container.escapeExpression, lookupProperty = container.lookupProperty || function(parent, propertyName) {
         if (Object.prototype.hasOwnProperty.call(parent, propertyName)) {
