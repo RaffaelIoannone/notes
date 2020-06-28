@@ -24,6 +24,7 @@ export default class NoteController {
     // this.noteFormContainer.addEventListener('submit', this.addNote.bind(this));
     this.noteFormContainer.addEventListener('submit', this.handleActionOnModal.bind(this));
 
+    this.noteFormContainer.addEventListener('click', this.closeModal.bind(this));
 
     this.noteFormButton.addEventListener(
       'click',
@@ -78,6 +79,14 @@ export default class NoteController {
       await this.renderNoteList();
     }
 
+  }
+
+  closeModal(event) {
+    const action = event.target.dataset.action;
+    if (action === 'close') {
+      event.preventDefault();
+      this.noteFormContainer.close();
+    }
   }
 
   openAddNoteModal() {

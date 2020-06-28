@@ -69,6 +69,8 @@ export default class SettingsController {
         this.logout();
       } else if (action === 'toggleFinishedNotes') {
         this.toggleFinishedNotes();
+      } else if (action === 'close') {
+        this.settingsContainer.close();
       } else {
         throw new Error(`Unknown action: ${action}`)
       }
