@@ -17,7 +17,6 @@
 
 .light-theme {
   --background: var(--grey);
-  /* --color: var(--dark-grey); */
   --note-color: var(--white);
   --surrounding-color: var(--turk);
 }
@@ -30,18 +29,9 @@ body {
   margin-left: 150px;
   margin-right: 150px;
   margin-top: 50px;
-  min-width: 320px;
-  /* grid-template-columns: 20% 1fr 20%; */
-  /* grid-template-rows: 200px 1fr 100px;
-  row-gap: 10px; */
-  /* grid-template-areas: 
-    "header header header"
-    ". main ."
-    "footer footer footer"; */
 }
 
 main {
-  /* grid-area: main; */
   background: var(--background);
   padding-left: 50px;
   padding-right: 50px;
@@ -51,16 +41,23 @@ main {
 
 header {
   display: grid;
-  /* grid-area: header; */
+  grid-template-columns: 1fr auto;
 }
 
 footer {
   padding-top: 50 px;
-  /* grid-area: footer; */
 }
 
 dialog::backdrop {
   background-color: rgba(0, 0, 0, 0.4);
+}
+
+dialog {
+  border: none;
+  padding-left: 50px;
+  padding-right: 50px;
+  padding-bottom: 50px;
+
 }
 
 form {
@@ -137,4 +134,10 @@ form {
 
 button > * {
   pointer-events: none;
+}
+
+.add-note-button {
+  background: var(--note-color);
+  border: none;
+  margin-bottom: 20px;
 }
