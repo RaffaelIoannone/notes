@@ -21,7 +21,6 @@ export default class NoteController {
   }
 
   initEventHandlers() {
-    // this.noteFormContainer.addEventListener('submit', this.addNote.bind(this));
     this.noteFormContainer.addEventListener('submit', this.handleActionOnModal.bind(this));
 
     this.noteFormContainer.addEventListener('click', this.closeModal.bind(this));
@@ -35,7 +34,6 @@ export default class NoteController {
       'click',
       this.handleActionOnNote.bind(this)
     );
-
   }
 
   async renderNoteList() {
@@ -48,10 +46,11 @@ export default class NoteController {
     });
   }
 
-  renderNoteForm(action, note) {
+  renderNoteForm(action, note, title) {
     this.noteFormContainer.innerHTML = Handlebars.templates.addNote({
       action: action,
       note: note,
+      title: title,
     });
   }
 
@@ -90,7 +89,7 @@ export default class NoteController {
   }
 
   openAddNoteModal() {
-    this.renderNoteForm('create', null);
+    this.renderNoteForm('create', null, 'Create new note');
     this.noteFormContainer.showModal();
   }
 
@@ -129,7 +128,7 @@ export default class NoteController {
   }
 
   openEditNoteModal(note) {
-    this.renderNoteForm('update', note);
+    this.renderNoteForm('update', note, 'Update note');
     this.noteFormContainer.showModal();
   }
 }
