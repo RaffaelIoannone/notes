@@ -27,12 +27,17 @@ export default class NoteController {
       'click',
       this.openAddNoteModal.bind(this)
     );
+
+    this.noteListContainer.addEventListener(
+      'click',
+      this.handleActionOnNote.bind(this)
+    );
   }
 
-  async renderNoteList(sortingMethod = 'creationDate') {
+  async renderNoteList() {
     let noteList = [];
     if (this.authService.isLoggedIn()) {
-      noteList = await this.noteService.getNotes(sortingMethod);
+      noteList = await this.noteService.getNotes();
     }
     this.noteListContainer.innerHTML = Handlebars.templates.noteList({
       notes: noteList,
@@ -40,6 +45,10 @@ export default class NoteController {
   }
 
   renderNoteForm() {
+    const input = {
+      note: undefined,
+      action: 'create',
+    };
     this.noteFormContainer.innerHTML = Handlebars.templates.addNote();
   }
 
@@ -56,6 +65,43 @@ export default class NoteController {
   }
 
   openAddNoteModal() {
+    this.renderNoteForm();
+    this.noteFormContainer.showModal();
+  }
+
+  async handleActionOnNote(event) {
+    const action = event.target.dataset.action;
+    if (action !== undefined) {
+      const id = event.target.dataset.id;
+      if (action === 'toggleFinish') {
+        await this.toggleFinish(id);
+      } else if (action === 'delete') {
+        await this.deleteNote(id);
+      } else if (action === 'edit') {
+        await this.editNote(id);
+      } else {
+        console.log(action);
+      }
+    }
+  }
+
+  async toggleFinish(id) {
+    const element = await this.noteService.getNote(id);
+    element.isFinished = !element.isFinished;
+    const result = await this.noteService.updateNote(id, element);
+    await this.renderNoteList();
+  }
+
+  async deleteNote(id) {
+    await this.noteService.removeNote(id);
+    await this.renderNoteList();
+  }
+
+  async editNote(id) {
+    this.openEditNoteModal();
+  }
+
+  openEditNoteModal() {
     this.renderNoteForm();
     this.noteFormContainer.showModal();
   }
