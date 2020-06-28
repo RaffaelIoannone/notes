@@ -1,41 +1,42 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Notes</title>
-    <link rel="stylesheet" href="../css/main.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.7.6/handlebars.runtime.min.js" defer></script>
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../css/main.css" />
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.7.6/handlebars.runtime.min.js"
+      defer
+    ></script>
     <script type="module" src="../js/main.js" defer></script>
-</head>
-<body class="light-theme">
+  </head>
+  <body class="light-theme">
     <main>
-        <h1>My note application</h1>
-        <header>
-            <button type="button">Create new Note</button>
-            <select id="theme-select">
-                <option selected value="light-theme">Light theme</option>
-                <option value="dark-theme">Dark theme</option>
-                <option value="forrest-theme">Forrest theme</option>
-            </select>
-        </header>
-        <h2>List</h2>
+      <header>
+        <h1>My Notes</h1>
+        <button class="icon-button" type="button" id="show-settings">
+          <i class="material-icons">settings</i>
+        </button>
+      </header>
 
-        <div id="auth-container"></div>
+      <div id="auth-container"></div>
 
-        <select id="sort-select">
-            <option selected value="creationDate">By created Date</option>
-            <option value="finishDate">By finish Date</option>
-            <option value="importance">By importance</option>
-        </select>
+      <button id="add-note" type="button">Create new Note</button>
 
-        <button type="button">Show finished</button>
+      <div id="note-list-container"></div>
 
-        <div id="note-list-container"></div>
+      <dialog id="note-form-container"></dialog>
 
-        <h2>Add</h2>
-        <div id="note-form-container"></div>
+      <dialog id="settings-container"></dialog>
+
+      <footer>
+        <p>&copy; Copyright 2020 Raffael Ioannone</p>
+      </footer>
     </main>
-    <footer>&copy; Copyright 2020 Raffael Ioannone</footer>
-</body>
+  </body>
 </html>

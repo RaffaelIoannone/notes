@@ -4,14 +4,26 @@ export default class Note {
     description,
     importance,
     dueDate,
-    finishDate = null,
-    creationDate = new Date(),
+    isFinished = false,
+    creationDate = new Date()
   ) {
     this.title = title;
     this.description = description;
     this.importance = importance;
     this.dueDate = dueDate;
-    this.finishDate = finishDate;
+    this.isFinished = isFinished;
     this.creationDate = creationDate;
+  }
+
+  static parse(json) {
+    const {
+      title,
+      description,
+      importance,
+      dueDate,
+      isFinished,
+      creationDate,
+    } = json;
+    return new this(title, description, importance, new Date(dueDate), isFinished, new Date(creationDate));
   }
 }

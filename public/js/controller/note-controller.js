@@ -1,21 +1,18 @@
-import { sortByCreationDate, sortByFinishDate, sortByImportance } from '../model/sorting.js';
+import Note from '../model/note.js';
+import '../view/customHelpers.js';
 
 export default class NoteController {
-  #noteService;
+  noteService;
+  authService;
 
-  constructor(noteService) {
-    this.#noteService = noteService;
+  constructor(noteService, authService) {
+    this.noteService = noteService;
+    this.authService = authService;
 
     this.noteListContainer = document.querySelector('#note-list-container');
-    // this.noteFormContainer = document.querySelector('#note-form-container');
 
-    this.noteListSortSelect = document.querySelector('#sort-select');
-
-    // this.noteForm = document.querySelector('#form-add-note');
-    // this.noteFormTitle = document.querySelector('#title');
-    // this.noteFormDescription = document.querySelector('#description');
-    // this.noteFormImportance = document.querySelector('#importance');
-    // this.noteFormDuedate = document.querySelector('#duedate');
+    this.noteFormButton = document.querySelector('#add-note');
+    this.noteFormContainer = document.querySelector('#note-form-container');
   }
 
   async init() {
@@ -24,50 +21,42 @@ export default class NoteController {
   }
 
   initEventHandlers() {
-    // this.noteForm.addEventListener('submit', this.addNote);
-    this.noteListSortSelect.addEventListener('change', this.switchListSorting.bind(this));
+    this.noteFormContainer.addEventListener('submit', this.addNote.bind(this));
+
+    this.noteFormButton.addEventListener(
+      'click',
+      this.openAddNoteModal.bind(this)
+    );
   }
 
   async renderNoteList(sortingMethod = 'creationDate') {
-    const noteList = await this.#noteService.getNotes(sortingMethod);
-    // noteList.sort(sortingMethod);
+    let noteList = [];
+    if (this.authService.isLoggedIn()) {
+      noteList = await this.noteService.getNotes(sortingMethod);
+    }
     this.noteListContainer.innerHTML = Handlebars.templates.noteList({
       notes: noteList,
     });
   }
 
-  // renderNoteForm() {
-  //   this.noteFormContainer.innerHTML = Handlebars.templates.addNote();
-  // }
+  renderNoteForm() {
+    this.noteFormContainer.innerHTML = Handlebars.templates.addNote();
+  }
 
   addNote(event) {
     event.preventDefault();
     const note = new Note(
-      this.noteFormTitle.value,
-      this.noteFormDescription.value,
-      this.noteFormImportance.value,
-      this.noteFormDuedate.value
+      document.querySelector('#title').value,
+      document.querySelector('#description').value,
+      document.querySelector('input[name="importance"]:checked').value,
+      document.querySelector('#duedate').value
     );
-    this.#noteService.addNote(note);
+    this.noteService.addNote(note);
     this.renderNoteList();
   }
 
-  switchListSorting() {
-    const { selectedIndex } = this.noteListSortSelect;
-    const selectedValue = this.noteListSortSelect.options[selectedIndex].value;
-    this.renderNoteList(selectedValue);
-    // switch (selectedValue) {
-    //   case 'creationDate':
-    //     this.renderNoteList(sortByCreationDate);
-    //     break;
-    //   case 'finishDate':
-    //     this.renderNoteList(sortByFinishDate);
-    //     break;
-    //   case 'importance':
-    //     this.renderNoteList(sortByImportance);
-    //     break;
-    //   default:
-    //     throw new Error('Unknown sorting algorithm');
-    // }
+  openAddNoteModal() {
+    this.renderNoteForm();
+    this.noteFormContainer.showModal();
   }
 }

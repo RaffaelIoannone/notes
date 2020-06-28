@@ -1,10 +1,10 @@
 export default class AuthController {
-  #authService;
-  #noteController;
+  authService;
+  noteController;
 
   constructor(authService, noteController) {
-    this.#authService = authService;
-    this.#noteController = noteController;
+    this.authService = authService;
+    this.noteController = noteController;
     this.authContainer = document.querySelector('#auth-container');
   }
 
@@ -14,7 +14,7 @@ export default class AuthController {
   }
 
   render() {
-    const authorized = this.#authService.isLoggedIn();
+    const authorized = this.authService.isLoggedIn();
     this.authContainer.innerHTML = Handlebars.templates.auth({
       authorized: authorized,
     });
@@ -22,7 +22,7 @@ export default class AuthController {
 
   rerender() {
     this.render();
-    this.#noteController.renderNoteList();
+    this.noteController.renderNoteList();
   }
 
   initEventhandlers() {
@@ -35,11 +35,8 @@ export default class AuthController {
     if (targetId === 'form-login') {
       const email = event.target.querySelector('#email').value;
       const password = event.target.querySelector('#password').value;
-      await this.#authService.login(email, password);
+      await this.authService.login(email, password);
       this.rerender();
-    } else if (targetId === 'form-logout') {
-      await this.#authService.logout();
-      this.rerender();
-    }
+    } 
   }
 }

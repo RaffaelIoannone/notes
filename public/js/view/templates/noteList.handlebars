@@ -1,12 +1,40 @@
 <div class="noteList">
   {{#each notes}}
-    <div class="note">
-      <h4>{{title}}</h1>
-      <p>{{description}} <br>
-      dueDate {{dueDate}} <br>
-      finishDate {{finishDate}} <br>
-      creationDate {{creationDate}} <br>
-      importance {{importance}}</p>
+  <div class="note">
+    <div class="note-finished">
+      {{#if isFinished}}
+      <i class="checkbox-finished material-icons">check_box</i>
+      {{else}}
+      <i class="checkbox-finished material-icons">check_box_outline_blank</i>
+      {{/if}}
     </div>
+
+    <div class="note-edit">
+      <button class="icon-button" type="button">
+        <i class="material-icons">edit</i>
+      </button>
+      <button class="icon-button" type="button">
+        <i class="material-icons">delete</i>
+      </button>
+    </div>
+
+    <div class="note-header">
+      <h4>
+        {{title}}
+        {{#times importance}}
+        <i class="material-icons">star</i>
+        {{/times}}
+      </h4>
+    </div>
+
+
+    <div class="note-description">
+      {{description}}
+    </div>
+
+    <div class="note-duedate">
+      <p><i>due until: {{formatDate dueDate}}</i></p>
+    </div>
+  </div>
   {{/each}}
 </div>

@@ -4,8 +4,6 @@ import SecurityUtil from '../utils/security';
 export default class NotesController {
   static async getNotes(req, res) {
     const currentUser = SecurityUtil.currentUser(req);
-    const sort = req.query.sort;
-    const filter = req.query.finishDate;
     res.json(await noteStore.all(currentUser) || []);
   }
 

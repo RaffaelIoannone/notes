@@ -1,7 +1,7 @@
 import ValueStorage from './value-storage.js';
 
 export default class HttpService {
-  #tokenKey = 'jwt-token';
+  tokenKey = 'jwt-token';
 
   async ajax(method, url, data) {
     const headers = new Headers({
@@ -11,7 +11,7 @@ export default class HttpService {
     if (this.hasAuthToken) {
       headers.append(
         'authorization',
-        `Bearer ${ValueStorage.getItem(this.#tokenKey)}`
+        `Bearer ${ValueStorage.getItem(this.tokenKey)}`
       );
     }
 
@@ -24,14 +24,14 @@ export default class HttpService {
   }
 
   setAuthToken(token) {
-    ValueStorage.setItem(this.#tokenKey, token);
+    ValueStorage.setItem(this.tokenKey, token);
   }
 
   hasAuthToken() {
-    return Boolean(ValueStorage.getItem(this.#tokenKey));
+    return Boolean(ValueStorage.getItem(this.tokenKey));
   }
 
   removeAuthToken() {
-    ValueStorage.setItem(this.#tokenKey, undefined);
+    ValueStorage.setItem(this.tokenKey, undefined);
   }
 }

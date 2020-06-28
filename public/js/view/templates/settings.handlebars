@@ -1,0 +1,41 @@
+<div>
+  <h1>Settings</h1>
+
+  <div>
+    Dark mode:
+    <button class="icon-button" type="button" id="theme-button" data-action=changeTheme>
+      {{#if darkThemeOn}}
+      <i class="material-icons">toggle_on</i>
+      {{else}}
+      <i class="material-icons">toggle_off</i>
+      {{/if}}
+    </button>
+  </div>
+
+  <div>
+    Show finished items:
+    <button class="icon-button" type="button" id="show-finished-notes-button" data-action=toggleFinishedNotes>
+      {{#if showFinishedNotesOn}}
+      <i class="material-icons">toggle_on</i>
+      {{else}}
+      <i class="material-icons">toggle_off</i>
+      {{/if}}
+  </div>
+
+  <div>
+    Sort list by:
+    <select id="sort-select">
+      <option selected value="creationDate">Creation Date</option>
+      <option value="dueDate">Due Date</option>
+      <option value="importance">Importance</option>
+    </select>
+  </div>
+
+  <div>
+    Logout:
+    <button class="icon-button" type="button" id="logout-button" data-action=logout>
+      <i class="material-icons">logout</i>
+    </button>
+  </div>
+
+</div>

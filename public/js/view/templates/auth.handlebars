@@ -1,9 +1,5 @@
 <div>
-  {{#if authorized}}
-  <form action="./" method="POST" id="form-logout">
-    <button class="form-submit" type="submit">Logout</button>
-  </form>
-  {{else}}
+  {{#unless authorized}}
   <form action="./" method="POST" id="form-login">
     <label class="form-label" for="email">E-Mail</label>
     <input class="form-input" type="text" name="email" id="email" placeholder="name@email.com">
@@ -11,5 +7,5 @@
     <input class="form-input" type="password" name="password" id="password" placeholder="your password">
     <button class="form-submit" type="submit">Login</button>
   </form>
-  {{/if}}
+  {{/unless}}
 </div>

@@ -1,5 +1,5 @@
-export function sortByFinishDate(a, b) {
-  return b.finishDate - a.finishDate;
+export function sortByDueDate(a, b) {
+  return b.dueDate - a.dueDate;
 }
 
 export function sortByCreationDate(a, b) {

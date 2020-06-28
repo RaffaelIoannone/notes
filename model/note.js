@@ -4,7 +4,7 @@ export default class Note {
     description,
     importance,
     dueDate,
-    finishDate = null,
+    finishDate = false,
     creationDate = new Date(),
   ) {
     this.title = title;
