@@ -10,7 +10,13 @@ export class NoteStore {
   }
 
   async update(id, note, currentUser) {
-    await this.db.update({ _id: id, user: currentUser }, { $set: note });
+    await this.db.update({ _id: id, user: currentUser }, { $set: {
+      title: note.title,
+      description: note.description,
+      importance: note.importance,
+      dueDate: note.dueDate,
+      isFinished: note.isFinished,
+    } });
     return this.get(id, currentUser);
   }
 

@@ -10,3 +10,9 @@ Handlebars.registerHelper('times', function(n, block) {
   }
   return accum;
 });
+
+Handlebars.registerHelper('precheck', function(checkedValue, buttonValue) {
+  if (checkedValue != null && checkedValue.importance == buttonValue) {
+    return 'checked';
+  }
+})

@@ -70,7 +70,7 @@ export default class SettingsController {
       } else if (action === 'toggleFinishedNotes') {
         this.toggleFinishedNotes();
       } else {
-        console.log(action);
+        throw new Error(`Unknown action: ${action}`)
       }
     }
   }

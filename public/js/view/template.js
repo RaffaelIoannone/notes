@@ -1,7 +1,36 @@
 (function() {
   var template = Handlebars.template, templates = Handlebars.templates = Handlebars.templates || {};
 templates['addNote'] = template({"compiler":[8,">= 4.3.0"],"main":function(container,depth0,helpers,partials,data) {
-    return "<form method=\"dialog\" id=\"form-add-note\">\n  <label class=\"form-label\" for=\"title\">Title</label>\n  <input class=\"form-input\" type=\"text\" name=\"title\" id=\"title\" placeholder=\"Enter your title\">\n\n  <label class=\"form-label\" for=\"description\">Description</label>\n  <textarea lass=\"form-input\" name=\"description\" id=\"description\" placeholder=\"Enter your description\"></textarea>\n\n  <label class=\"form-label\" for=\"importance\">Importance</label>\n  <div class=\"form-input\">\n    <input type=\"radio\" name=\"importance\" value=\"1\" id='importance'>\n    <input type=\"radio\" name=\"importance\" value=\"2\">\n    <input type=\"radio\" name=\"importance\" value=\"3\">\n    <input type=\"radio\" name=\"importance\" value=\"4\">\n    <input type=\"radio\" name=\"importance\" value=\"5\">\n  </div>\n\n  <label class=\"form-label\" for=\"duedate\">Done until</label>\n  <input lass=\"form-input\" type=\"date\" name=\"duedate\" id=\"duedate\">\n\n  <button class=\"form-submit\" type=\"submit\">Save</button>\n  <button class=\" form-cancel\" type=\"button\">Cancel</button>\n</form>";
+    var stack1, helper, alias1=depth0 != null ? depth0 : (container.nullContext || {}), alias2=container.hooks.helperMissing, alias3=container.escapeExpression, alias4=container.lambda, lookupProperty = container.lookupProperty || function(parent, propertyName) {
+        if (Object.prototype.hasOwnProperty.call(parent, propertyName)) {
+          return parent[propertyName];
+        }
+        return undefined
+    };
+
+  return "<form method=\"dialog\" id=\"form-add-note\" data-action="
+    + alias3(((helper = (helper = lookupProperty(helpers,"action") || (depth0 != null ? lookupProperty(depth0,"action") : depth0)) != null ? helper : alias2),(typeof helper === "function" ? helper.call(alias1,{"name":"action","hash":{},"data":data,"loc":{"start":{"line":1,"column":53},"end":{"line":1,"column":63}}}) : helper)))
+    + " data-id="
+    + alias3(alias4(((stack1 = (depth0 != null ? lookupProperty(depth0,"note") : depth0)) != null ? lookupProperty(stack1,"_id") : stack1), depth0))
+    + " data-finished="
+    + alias3(alias4(((stack1 = (depth0 != null ? lookupProperty(depth0,"note") : depth0)) != null ? lookupProperty(stack1,"isFinished") : stack1), depth0))
+    + ">\n  <label class=\"form-label\" for=\"title\">Title</label>\n  <input class=\"form-input\" type=\"text\" name=\"title\" id=\"title\" placeholder=\"Enter your title\" value=\""
+    + alias3(alias4(((stack1 = (depth0 != null ? lookupProperty(depth0,"note") : depth0)) != null ? lookupProperty(stack1,"title") : stack1), depth0))
+    + "\">\n\n  <label class=\"form-label\" for=\"description\">Description</label>\n  <textarea lass=\"form-input\" name=\"description\" id=\"description\" placeholder=\"Enter your description\">"
+    + alias3(alias4(((stack1 = (depth0 != null ? lookupProperty(depth0,"note") : depth0)) != null ? lookupProperty(stack1,"description") : stack1), depth0))
+    + "</textarea>\n\n  <label class=\"form-label\" for=\"importance\">Importance</label>\n  <div class=\"form-input\">\n    <input type=\"radio\" name=\"importance\" value=\"1\" id='importance' "
+    + alias3((lookupProperty(helpers,"precheck")||(depth0 && lookupProperty(depth0,"precheck"))||alias2).call(alias1,(depth0 != null ? lookupProperty(depth0,"note") : depth0),1,{"name":"precheck","hash":{},"data":data,"loc":{"start":{"line":10,"column":68},"end":{"line":10,"column":87}}}))
+    + ">\n    <input type=\"radio\" name=\"importance\" value=\"2\" "
+    + alias3((lookupProperty(helpers,"precheck")||(depth0 && lookupProperty(depth0,"precheck"))||alias2).call(alias1,(depth0 != null ? lookupProperty(depth0,"note") : depth0),2,{"name":"precheck","hash":{},"data":data,"loc":{"start":{"line":11,"column":52},"end":{"line":11,"column":71}}}))
+    + ">\n    <input type=\"radio\" name=\"importance\" value=\"3\" "
+    + alias3((lookupProperty(helpers,"precheck")||(depth0 && lookupProperty(depth0,"precheck"))||alias2).call(alias1,(depth0 != null ? lookupProperty(depth0,"note") : depth0),3,{"name":"precheck","hash":{},"data":data,"loc":{"start":{"line":12,"column":52},"end":{"line":12,"column":71}}}))
+    + ">\n    <input type=\"radio\" name=\"importance\" value=\"4\" "
+    + alias3((lookupProperty(helpers,"precheck")||(depth0 && lookupProperty(depth0,"precheck"))||alias2).call(alias1,(depth0 != null ? lookupProperty(depth0,"note") : depth0),4,{"name":"precheck","hash":{},"data":data,"loc":{"start":{"line":13,"column":52},"end":{"line":13,"column":71}}}))
+    + ">\n    <input type=\"radio\" name=\"importance\" value=\"5\" "
+    + alias3((lookupProperty(helpers,"precheck")||(depth0 && lookupProperty(depth0,"precheck"))||alias2).call(alias1,(depth0 != null ? lookupProperty(depth0,"note") : depth0),5,{"name":"precheck","hash":{},"data":data,"loc":{"start":{"line":14,"column":52},"end":{"line":14,"column":71}}}))
+    + ">\n  </div>\n  <label class=\"form-label\" for=\"duedate\">Done until</label>\n  <input lass=\"form-input\" type=\"date\" name=\"duedate\" id=\"duedate\" value=\""
+    + alias3(alias4(((stack1 = (depth0 != null ? lookupProperty(depth0,"note") : depth0)) != null ? lookupProperty(stack1,"dueDate") : stack1), depth0))
+    + "\">\n  <button class=\"form-submit\" type=\"submit\">Save</button>\n  <button class=\" form-cancel\" type=\"button\">Cancel</button>\n</form>";
 },"useData":true});
 templates['auth'] = template({"1":function(container,depth0,helpers,partials,data) {
     return "  <form action=\"./\" method=\"POST\" id=\"form-login\">\n    <label class=\"form-label\" for=\"email\">E-Mail</label>\n    <input class=\"form-input\" type=\"text\" name=\"email\" id=\"email\" placeholder=\"name@email.com\">\n    <label class=\"form-label\" for=\"password\">Password</label>\n    <input class=\"form-input\" type=\"password\" name=\"password\" id=\"password\" placeholder=\"your password\">\n    <button class=\"form-submit\" type=\"submit\">Login</button>\n  </form>\n";
