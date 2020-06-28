@@ -5,7 +5,8 @@ export default class Note {
     importance,
     dueDate,
     isFinished = false,
-    creationDate = new Date()
+    creationDate = new Date(),
+    _id = undefined
   ) {
     this.title = title;
     this.description = description;
@@ -13,6 +14,7 @@ export default class Note {
     this.dueDate = dueDate;
     this.isFinished = isFinished;
     this.creationDate = creationDate;
+    this._id = _id;
   }
 
   static parse(json) {
@@ -23,7 +25,8 @@ export default class Note {
       dueDate,
       isFinished,
       creationDate,
+      _id
     } = json;
-    return new this(title, description, importance, new Date(dueDate), isFinished, new Date(creationDate));
+    return new this(title, description, importance, new Date(dueDate), isFinished, new Date(creationDate), _id);
   }
 }

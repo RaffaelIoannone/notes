@@ -24,11 +24,11 @@ export default class NotesController {
 
   static async showNote(req, res) {
     const currentUser = SecurityUtil.currentUser(req);
-    res.json(await noteStore.get(req.params.id, currentUser(req)));
+    res.json(await noteStore.get(req.params.id, currentUser));
   }
 
   static async deleteNote(req, res) {
     const currentUser = SecurityUtil.currentUser(req);
-    res.json(await noteStore.delete(req.params.id, currentUser(req)));
+    res.json(await noteStore.delete(req.params.id, currentUser));
   }
 }

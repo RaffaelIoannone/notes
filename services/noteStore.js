@@ -15,7 +15,7 @@ export class NoteStore {
   }
 
   async delete(id, currentUser) {
-    return this.db.delete(
+    return this.db.remove(
       { _id: id, user: currentUser },
     );
   }
