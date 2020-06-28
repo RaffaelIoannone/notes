@@ -1,0 +1,42 @@
+<div class="noteList">
+  {{#each notes}}
+  <div class="note">
+    <div class="note-finished">
+      <button class="icon-button" type="button" data-action=toggleFinish data-id={{_id}}>
+        {{#if isFinished}}
+        <i class="material-icons">check_box</i>
+        {{else}}
+        <i class="material-icons">check_box_outline_blank</i>
+        {{/if}}
+      </button>
+    </div>
+
+    <div class="note-edit">
+      <button class="icon-button" type="button" data-action=edit data-id={{_id}}>
+        <i class="material-icons">edit</i>
+      </button>
+      <button class="icon-button" type="button" data-action=delete data-id={{_id}}>
+        <i class="material-icons">delete</i>
+      </button>
+    </div>
+
+    <div class="note-header">
+      <h4>
+        {{title}}
+        {{#times importance}}
+        <i class="material-icons">star</i>
+        {{/times}}
+      </h4>
+    </div>
+
+
+    <div class="note-description">
+      {{description}}
+    </div>
+
+    <div class="note-duedate">
+      <p><i>due until: {{formatDate dueDate}}</i></p>
+    </div>
+  </div>
+  {{/each}}
+</div>

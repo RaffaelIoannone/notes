@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Notes</title>
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../css/main.css" />
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.7.6/handlebars.runtime.min.js"
+      defer
+    ></script>
+    <script type="module" src="../js/main.js" defer></script>
+  </head>
+  <body class="light-theme">
+    <main>
+      <header>
+        <h1>My Notes</h1>
+        <button class="icon-button" type="button" id="show-settings">
+          <i class="material-icons">settings</i>
+        </button>
+      </header>
+
+      <div id="auth-container"></div>
+
+      <button class="add-note-button" id="add-note" type="button">
+        <i class="material-icons">add</i>
+      </button>
+
+      <div id="note-list-container"></div>
+
+      <dialog id="note-form-container"></dialog>
+
+      <dialog id="settings-container"></dialog>
+
+      <footer>
+        <p>&copy; Copyright 2020 Raffael Ioannone</p>
+      </footer>
+    </main>
+  </body>
+</html>

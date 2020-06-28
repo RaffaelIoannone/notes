@@ -1,0 +1,143 @@
+:root {
+  --dark-grey: rgb(37, 34, 34);
+  --ligth-green: #8ee4af;
+  --normal-green: #5cdb95;
+  --dark-green: #379683;
+  --cream: #edf5e1;
+  --navy: #05386b;
+  --white: rgb(254, 254, 254);
+  --grey: rgb(237, 240, 242);
+  --turk: rgb(53, 73, 84);
+}
+
+.dark-theme {
+  --background: var(--dark-grey);
+  --color: var(--cream);
+}
+
+.light-theme {
+  --background: var(--grey);
+  --note-color: var(--white);
+  --surrounding-color: var(--turk);
+}
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  color: var(--color);
+  background: var(--surrounding-color);
+  display: grid;
+  margin-left: 150px;
+  margin-right: 150px;
+  margin-top: 50px;
+}
+
+main {
+  background: var(--background);
+  padding-left: 50px;
+  padding-right: 50px;
+  padding-top: 25px;
+  display: grid;
+}
+
+header {
+  display: grid;
+  grid-template-columns: 1fr auto;
+}
+
+footer {
+  padding-top: 50 px;
+}
+
+dialog::backdrop {
+  background-color: rgba(0, 0, 0, 0.4);
+}
+
+dialog {
+  border: none;
+  padding-left: 50px;
+  padding-right: 50px;
+  padding-bottom: 50px;
+
+}
+
+form {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  column-gap: 10px;
+}
+
+.form-label {
+  grid-column: 1 / span 1;
+}
+
+.form-input {
+  grid-column: 2 / span 1;
+}
+
+.form-submit {
+  grid-column: 1 / span 2;
+}
+
+.form-cancel {
+  grid-column: 2 / span 1;
+}
+
+.noteList {
+  display: grid;
+  row-gap: 20px;
+}
+
+.note {
+  padding: 15px 15px;
+  display: grid; 
+  grid-template-columns: auto 1fr auto;
+  grid-template-rows: repeat(7, auto);
+  column-gap: 15px;
+}
+
+.note-finished {
+  grid-row: 1 / -1; 
+  align-self: center;
+}
+
+.note-edit {
+  grid-row: 1 / -1;
+  grid-column: -1 / span 1;
+  align-self: center;
+  display: grid;
+  grid-auto-flow: row;
+  row-gap: 20px;
+}
+
+.note-header > h4 {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.note-description {
+  grid-column: 2 / -1;
+}
+
+.note-duedate > p {
+  margin-top: 10px;
+  margin-bottom: 0px;
+}
+
+.light-theme .note {
+  background: var(--note-color);
+}
+
+.icon-button {
+  background: none;
+  border: none;
+}
+
+button > * {
+  pointer-events: none;
+}
+
+.add-note-button {
+  background: var(--note-color);
+  border: none;
+  margin-bottom: 20px;
+}

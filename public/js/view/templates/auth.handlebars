@@ -1,0 +1,11 @@
+<div>
+  {{#unless authorized}}
+  <form action="./" method="POST" id="form-login">
+    <label class="form-label" for="email">E-Mail</label>
+    <input class="form-input" type="text" name="email" id="email" placeholder="name@email.com">
+    <label class="form-label" for="password">Password</label>
+    <input class="form-input" type="password" name="password" id="password" placeholder="your password">
+    <button class="form-submit" type="submit">Login</button>
+  </form>
+  {{/unless}}
+</div>
